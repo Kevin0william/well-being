@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" translate="yes">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Well Being Avocate - Services</title>
+  <!-- FontAwesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ------------------------------
+       Global Reset & Background
+       ------------------------------ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      background: url('service.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #eee;
+    }
+    a { text-decoration: none; color: inherit; }
+    h1, h2, h3 { font-weight: bold; }
+    
+    /* ------------------------------
+       Header & Navigation
+       ------------------------------ */
+    header {
+      background: rgba(0,0,0,0.85);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #00ffff;
+      position: relative;
+      z-index: 10;
+    }
+    header .logo {
+      font-size: 1.8em;
+      color: #00ffff;
+    }
+    header nav a {
+      margin-left: 20px;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #ff00ff;
+    }
+    
+    /* ------------------------------
+       Greeting Message
+       ------------------------------ */
+    .greeting {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 10px #00ffff;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 10px #00ffff; }
+      50% { text-shadow: 0 0 20px #ff00ff; }
+    }
+    
+    /* ------------------------------
+       Cartes de Services 3D
+       ------------------------------ */
+    .cards-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    .card {
+      background: #222;
+      width: 300px;
+      height: 300px;
+      border: 2px solid #00ffff;
+      border-radius: 15px;
+      perspective: 1000px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      position: relative;
+    }
+    .card:hover {
+      transform: scale(0.98);
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .card.active .card-inner {
+      transform: rotateX(180deg);
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .card-front {
+      background: #222;
+      color: #00ffff;
+    }
+    .card-back {
+      background: #333;
+      color: #ff00ff;
+      transform: rotateX(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 1.5em;
+      text-decoration: underline;
+    }
+    .card p {
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    
+    /* ------------------------------
+       Sections de Ressources (Messages Inspirants)
+       ------------------------------ */
+    .resource-section {
+      margin: 40px 20px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+    }
+    .resource-section h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #00ffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .resource-message {
+      color: #fff;
+      font-size: 1.1em;
+      line-height: 1.6;
+      padding: 10px;
+      text-align: center;
+    }
+    .resource-message a {
+      color: #ff00ff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .resource-message a:hover {
+      color: #00ffff;
+    }
+    
+    /* ------------------------------
+       Footer Message
+       ------------------------------ */
+    .footer-message {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #fff;
+      animation: glow 2s infinite;
+    }
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 10px #00ffff; }
+      50% { text-shadow: 0 0 20px #ff00ff; }
+    }
+    
+    /* ------------------------------
+       Responsive Adjustments
+       ------------------------------ */
+    @media(max-width: 768px) {
+      header { flex-direction: column; }
+      header nav a { margin: 10px; }
+      .cards-container { flex-direction: column; align-items: center; }
+      .resource-section { margin: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <header>
+    <div class="logo">Well Being Avocate</div>
+    <nav>
+      <a href="acceuil.html">Home</a>
+      <a href="communaute.html">Community</a>
+    </nav>
+  </header>
+  
+  <!-- Message de salutations -->
+  <div class="greeting">
+    Well Being Advocate provides a range of mental health and wellness services to individuals, <br>
+     organizations, and communities. <br>
+      These services ensure accessibility to quality mental health care, <br>
+       training, and advocacy.
+  </div>
+  
+  <!-- Cartes de services 3D -->
+  <section class="cards-container">
+    <!-- Carte 1: Thérapie & accompagnement -->
+    <div class="card" id="card1">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <h3 style="font-size: 1.5vw;">Mental Health Counseling &amp; Therapy</h3>
+          <p>
+            •	✔ One-on-one counseling sessions with licensed therapists. <br>
+            •	✔ Group therapy sessions for different mental health conditions. <br>
+            •	✔ Crisis intervention support for individuals facing emergencies. <br>
+            •	✔ Peer support programs for individuals living with HIV, trauma, and stress.
+             
+           </p>
+        </div>
+        <div class="card-face card-back">
+          <img src="therapie.jpg" alt="Thérapie Image">
+        </div>
+      </div>
+    </div>
+    <!-- Carte 2: Formations & Séminaires -->
+    <div class="card" id="card2">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <h3 style="font-size: 1.5vw;">Mental Health Training &amp; Certification Programs</h3>
+          <p>
+            •	✔ 'Becoming a Mental Health Counselor in 3 Months' program. <br>
+            •	✔ Certification courses for mental health advocates. <br>
+            •	✔ Corporate mental health training for workplaces. <br>
+            •	✔ School-based mental health education programs. 
+            
+          </p>
+        </div>
+        <div class="card-face card-back">
+          <img src="formation.jpg" alt="Formations Image">
+        </div>
+      </div>
+    </div>
+    <!-- Carte 3: Consulting & Entrepreneuriat -->
+    <div class="card" id="card3">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <h3 style="font-size: 1.5vw;">Community Mental Health Advocacy</h3>
+          <p>
+•	✔ Public awareness campaigns and outreach programs. <br>
+•	✔ Mental health advocacy in schools, workplaces, and churches. <br>
+•	✔ Organizing conferences and seminars on mental well-being. <br>
+•	✔ Partnering with organizations to promote mental health policies.
+
+          </p>
+        </div>
+        <div class="card-face card-back">
+          <img src="img3.jpg" alt="Consulting Image">
+        </div>
+      </div>
+    </div>
+    <!-- Carte 4: Business & Corporate Mental Health Services -->
+    <div class="card" id="card4">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <h3>Business &amp; Corporate Mental Health Services</h3>
+          <p>
+            ✔ Employee wellness and stress management programs.<br>
+            ✔ Psychological assessment and mental health screenings.<br>
+            ✔ Conflict resolution and team-building workshops.<br>
+            ✔ Customized mental health consulting for businesses.
+          </p>
+        </div>
+        <div class="card-face card-back">
+          <img src="img4.jpg" alt="Business Services Image">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Sections de Ressources Inspirantes -->
+  <!-- Partie 1: Articles éducatifs sur la santé mentale -->
+  <section class="resource-section">
+    <h2>Educational Articles on Mental Health</h2>
+    <div class="resource-message">
+      <p>
+        Join our WhatsApp Channel for exclusive educational articles! <br><br>
+        Are you passionate about personal growth and mental well-being? Unlock expert insights, practical tips, and empowering strategies that will transform your life. <br><br>
+        <strong>What You’ll Get:</strong><br>
+        ✓ Expert insights on mental health<br>
+        ✓ Practical tips for success<br>
+        ✓ Motivation and empowerment<br>
+        ✓ Exclusive content you won’t find anywhere else<br><br>
+        Don't miss out – start your journey now: <a href="https://whatsapp.com/channel/0029Vb6t5oB4yltNnkTdO93D" target="_blank">Join WhatsApp Channel</a>
+      </p>
+    </div>
+  </section>
+  
+  <!-- Partie 2: Guides et outils pratiques -->
+  <section class="resource-section">
+    <h2>Guides and Practical Tools</h2>
+    <div class="resource-message">
+      <p>
+        Discover our telegram channel dedicated to practical guides and tools for mental well-being. <br><br>
+        Access in-depth tutorials, step-by-step strategies, and innovative resources to boost your personal and professional growth. <br><br>
+        Join us now and empower your journey: <a href="https://t.me/Wellbeingadvocate" target="_blank">Join telegram Channel</a>
+      </p>
+    </div>
+  </section>
+  
+  <!-- Partie 3: Vidéos et témoignages inspirants -->
+  <section class="resource-section">
+    <h2>Inspirational Videos and Testimonials</h2>
+    <div class="resource-message">
+      <p>
+        Immerse yourself in inspiring videos and heartfelt testimonials that celebrate mental resilience and transformation. <br><br>
+        Our channel features real stories, expert advice, and creative content designed to uplift and motivate. <br><br>
+        Experience the inspiration now: <a href="https://www.tiktok.com/@wellbeing.advocac?_t=ZM-8uvfHoq385v&_r=1" target="_blank">Join tiktok Channel</a>
+      </p>
+    </div>
+  </section>
+  
+  <!-- Partie 4: Événements -->
+  <section class="resource-section">
+    <h2>Events</h2>
+    <div class="resource-message">
+      <p>
+        Stay connected with our latest events and live sessions focused on mental health and community building. <br><br>
+        From interactive webinars to in-person workshops, discover opportunities that empower you to make a difference. <br><br>
+        Don't miss out – join our events community: <a href="https://www.facebook.com/profile.php?id=61559336816104" target="_blank">Visit our Facebook Events</a> and <a href="https://www.instagram.com/wellbeingaddict237?igsh=ejlwMWIzaDdhMjE=" target="_blank">Visit our instagram Events</a>
+      </p>
+    </div>
+  </section>
+  
+  <!-- Message final brillant -->
+  <div class="footer-message">
+    Take care of yourself, your well-being is precious. 💖
+  </div>
+  
+  <!-- Modal générique (pour affichage de contenu si nécessaire) -->
+  <div class="modal" id="modal">
+    <span class="close" id="modalClose">&times;</span>
+    <div id="modalContent"></div>
+  </div>
+
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'en,es,de,it,at,zh',
+        autodisplay: true // Ative automatiquement la traduction
+      }, 'google_translate_element');
+    }
+    // Injectele script Google Translate dynamiquement
+    (function() {
+      var gt= document.createElement('script');
+      gt.type= 'text/javascript';
+      gt.src= '// translate.google.com/ translate a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(gt)
+    })()
+  </script>
+  
+  
+  <!-- =====================
+       Scripts JS pour interactions
+       ===================== -->
+  <script>
+    // Gestion du basculement des cartes 3D : au clic, la carte tourne pour révéler l'image
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+    });
+    
+    // Fonction générique pour ouvrir le modal (si besoin pour d'autres contenus)
+    function openModal(content) {
+      const modal = document.getElementById('modal');
+      document.getElementById('modalContent').innerHTML = "<p>" + content + "</p>";
+      modal.classList.add('active');
+    }
+    
+    // Fermer le modal
+    document.getElementById('modalClose').addEventListener('click', () => {
+      document.getElementById('modal').classList.remove('active');
+    });
+    
+    // Exemple : gestion du clic sur blocs ressources ou événements pour ouvrir le modal
+    document.querySelectorAll('.resource-block').forEach(block => {
+      block.addEventListener('click', () => {
+        const content = block.getAttribute('data-content');
+        openModal(content);
+      });
+    });
+    document.querySelectorAll('.event-block').forEach(block => {
+      block.addEventListener('click', () => {
+        const content = block.getAttribute('data-content');
+        openModal(content);
+      });
+    });
+  </script>
+</body>
+</html>

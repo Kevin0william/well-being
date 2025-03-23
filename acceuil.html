@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" translate="yes">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Well Being Avocate</title>
+  <!-- FontAwesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ------------------------------
+   Global Reset & Background
+   ------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  font-family: 'Work Sans', sans-serif;
+  scroll-behavior: smooth;
+  background: url('new well.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+}
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+/* ------------------------------
+   Header & Navigation
+   ------------------------------ */
+header {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #00ffff;
+  position: relative;
+  z-index: 10;
+}
+header .logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #00ffff;
+}
+header nav a {
+  margin-left: 20px;
+  font-size: 1.1em;
+  transition: color 0.3s;
+}
+header nav a:hover {
+  color: #ff00ff;
+}
+
+/* ------------------------------
+   Hero Section
+   ------------------------------ */
+.hero {
+  position: relative;
+  height: 60vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero .welcome {
+  font-size: 2.8em;
+  font-weight: bold;
+  color: #fff;
+  animation: fadeIn 2s ease-in-out;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------
+   Intro Section
+   ------------------------------ */
+.intro {
+  padding: 40px 20px;
+  background: rgba(245,245,245,0.9);
+  text-align: center;
+}
+.intro h2 {
+  margin-bottom: 20px;
+  color: #222;
+}
+.intro p {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ------------------------------
+   About Section with 6 3D Cards
+   ------------------------------ */
+.about {
+  padding: 40px 20px;
+  background: #fff;
+  text-align: center;
+}
+.about h2 {
+  margin-bottom: 30px;
+  color: #222;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  background: #e0e0e0;
+  width: 250px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  perspective: 1000px;
+  border-radius: 10px;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ------------------------------
+   Modal for Card Details
+   ------------------------------ */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background: #fff;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+.modal.active {
+  display: block;
+}
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ------------------------------
+   Contact Section with Enhanced Dynamic Form
+   ------------------------------ */
+.contact {
+  padding: 40px 20px;
+  text-align: center;
+}
+.contact h2 {
+  margin-bottom: 20px;
+  color: #222;
+}
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.8);
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.5s;
+}
+.contact-form-container:hover {
+  transform: scale(1.02);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 1em;
+  color: #000;
+  margin-bottom: 5px;
+  transition: transform 0.3s, color 0.3s;
+}
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.95);
+  color: #000;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #00ffff;
+}
+.form-group input:focus + label,
+.form-group textarea:focus + label {
+  transform: translateY(-5px);
+  color: #00ffff;
+}
+button[type="submit"] {
+  padding: 15px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  background: #00ffff;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+button[type="submit"]:hover {
+  background: #00ccff;
+  transform: translateY(-3px);
+}
+
+/* ------------------------------
+   Footer Section
+   ------------------------------ */
+footer {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+footer .contact-info {
+  margin-bottom: 10px;
+}
+footer .social-icons a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 1.5em;
+  transition: color 0.3s;
+}
+footer .social-icons a:hover {
+  color: #ccc;
+}
+.footer-message {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 1.8em;
+  color: #fff;
+  animation: glow 2s infinite;
+}
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 10px #00ffff; }
+  50% { text-shadow: 0 0 20px #ff00ff; }
+}
+
+/* ------------------------------
+   Image Gallery Section
+   ------------------------------ */
+.image-gallery {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.image-gallery .item {
+  text-align: center;
+  margin: 10px;
+}
+.image-gallery .item img {
+  max-width: 12vw;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius:2vw ;
+}
+
+/* ------------------------------
+   Responsive Adjustments
+   ------------------------------ */
+@media (max-width: 1024px) {
+  .hero .welcome {
+    font-size: 2.2em;
+  }
+  header nav a {
+    font-size: 1em;
+  }
+  .card {
+    width: 220px;
+    height: 140px;
+    font-size: 1em;
+  }
+  .image-gallery .item img {
+    max-width: 18vw;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  header nav {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  header nav a {
+    margin: 10px;
+    display: inline-block;
+  }
+  .hero {
+    height: 50vh;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-form-container {
+    width: 90%;
+  }
+  .image-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-gallery .item img {
+    max-width: 50vw;
+  }
+}
+
+@media (max-width: 480px) {
+  header .logo {
+    font-size: 1.5em;
+  }
+  .hero .welcome {
+    font-size: 1.8em;
+  }
+  .intro p, .contact-form-container, .cards {
+    padding: 0 10px;
+  }
+  .form-group label, .form-group input, .form-group textarea {
+    font-size: 0.9em;
+  }
+  button[type="submit"] {
+    font-size: 1em;
+    padding: 12px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="logo">Well Being Avocate</div>
+    <nav>
+      <a href="service.html">Our Services</a>
+      <a href="https://www.facebook.com/profile.php?id=61559336816104">Community</a>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="welcome">Welcome to Well Being Avocate</div>
+  </section>
+  
+  <!-- Intro Section -->
+  <section class="intro">
+    <h2>Your Well-being, Our Commitment</h2>
+    <p>
+      At Well Being Advocate, we believe in a world where mental health is a priority and everyone can access compassionate support to thrive.
+      <br><br>
+      Our core values:<br>
+      ✅ Empathy – Support based on active listening and understanding<br>
+      ✅ Resilience – Helping you overcome challenges and bounce back stronger<br>
+      ✅ Commitment – Actively working to improve mental well-being<br>
+      ✅ Accessibility – Resources and services open to all
+      <br><br>
+      Join us today and become part of a community dedicated to mental well-being.
+    </p>
+  </section>
+  
+  <!-- About Section with 6 3D Cards -->
+  <section class="about">
+    <h2>About Us</h2>
+    <div class="cards">
+      <div class="card" data-modal="modal-history">Our History</div>
+      <div class="card" data-modal="modal-mission">Our Mission</div>
+      <div class="card" data-modal="modal-team">Our Team</div>
+      <div class="card" data-modal="modal-vision">Our Vision</div>
+      <div class="card" data-modal="modal-objectives">Our Objectives</div>
+      <div class="card" data-modal="modal-milestones">Key Milestones</div>
+    </div>
+  </section>
+  
+  <!-- Modals for About Cards -->
+  <div id="modal-history" class="modal" style="background-image: url(newnew.jpg);color: black; font-weight: bold;">
+    <span class="close" data-close="modal-history">&times;</span>
+    <p>
+      <center>
+        <i>
+          <br><br><br><br><h3 style="color: goldenrod; font-size: 3vw;">History of Well Being Advocate </h3>
+          Well Being Advocate was founded by Dr. Ime Charline,<br>
+           a laboratory technician and mental health advocate,<br>
+            with a mission to support mental health awareness, empower individuals,<br>
+             and provide resources for psychological resilience. <br>
+              The organization was established out of a deep commitment to destigmatizing mental health issues, <br> particularly among individuals living with HIV, <br>
+               and to create a safe space for mental well-being. <br><br>
+          </i>
+      </center>
+    </p>
+  </div>
+  <div id="modal-mission" class="modal"  style="background-image: url(mission.jpg);color: whitesmoke; font-weight: bold;">
+    <span class="close" data-close="modal-mission">&times;</span><br><br><br><br><br>
+    <center> 
+      <h2 style="color: goldenrod; font-size: 3vw;">Mission</h2>
+    </center> 
+    <p>
+      <center>
+        Well Being Advocate is committed to promoting mental health awareness, <br>
+        providing accessible counseling and training services, <br>
+        and empowering individuals to become mental health advocates. <br>
+        Our goal is to reduce stigma, offer professional support, <br>
+        and create sustainable mental health solutions for communities.
+      </center>
+    </p>
+  </div>
+  <div id="modal-team" class="modal" style="background-color: gray;">
+    <span class="close" data-close="modal-team">&times;</span>
+    <h2>Our Team</h2>
+    <div class="image-gallery">
+      <div class="item">
+        <img src="personel1.jpg" alt="Image 1">
+        <h3 style="cursor: pointer; color: white;">
+          Dr. Ime Charline<br>
+          Founder & CEO <br>
+          psychologist therapist
+        </h3>
+      </div>
+      <div class="item">
+        <img src="perso2.jpg" alt="Image 2">
+        <h3 style="cursor: pointer; color: white;">Divine SIH co-founder</h3>
+      </div>
+      <div class="item">
+        <img src="moi1.jpg" alt="Image 2">
+        <h3><a href="http://wa.me/+237670078114" style="color: white; text-decoration: none;">Kevin william <br>
+        Developper </a>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div id="modal-vision" class="modal" style="background-image: url(vision2.jpg); color: #000;">
+    <span class="close" data-close="modal-vision">&times;</span>
+    <center> 
+      <br><br><br>
+      <h4 style="font-weight: 5vw;">Our Vision</h4>
+      <p>
+        To build a world where mental health is prioritized, supported, and accessible to all, <br>
+        ensuring that every individual has the resources and knowledge to lead a mentally <br>
+        resilient and fulfilling life. <br>
+        <br> <h4 style="font-weight: 5vw;">Vision for the Future </h4><br>
+
+        Well Being Advocate aims to continue expanding its impact by: <br>
+        
+        Reaching underserved populations with mental health resources <br>
+        
+        Developing structured mental health programs for various communities <br>
+        
+        Influencing mental health policies at local and national levels <br>
+        
+        Integrating mental health support into everyday life through training, workshops, and advocacy campaigns <br>
+      </p>
+    </center>
+  </div>
+  <div id="modal-objectives" class="modal" style="background-image: url(objectif.jpg); color: white; font-weight: bold;">
+    <span class="close" data-close="modal-objectives">&times;</span> 
+    <br><br><br><br><br><br><br><br>
+    <center>
+      <h2 style="color: #000;">Objectives</h2>
+      <p>
+        <br>
+        •	✔ Provide professional mental health counseling and support services. <br>
+        •	✔ Train individuals to become certified mental health counselors and advocates. <br>
+        •	✔ Raise awareness and reduce stigma around mental health in communities. <br>
+        •	✔ Develop sustainable business models to support mental health initiatives. <br>
+        •	✔ Partner with organizations to integrate mental health into education and workplaces. <br>
+        •	✔ Establish a crisis intervention system to provide emergency support. <br>
+        •	✔ Create a global network of mental health professionals and advocates. <br>
+        •	✔ Promote mental health research and innovation to improve services and outcomes. <br>
+      </p>
+    </center>
+  </div>
+  <div id="modal-milestones" class="modal" style="background-image: url(originally\ .jpg); color: #000; font-weight: bold;">
+    <span class="close" data-close="modal-milestones">&times;</span>
+    
+      <center>
+       <br><br><br><br><br> <p style="font-size: 3vw; color: goldenrod;">Key Milestones <br><br></p>
+       <p style="color: rgb(215, 138, 5);"> Foundation and Early Mission: <br>
+         Well Being Advocate began as a mental health awareness initiative, <br>
+          focusing on empowerment, resilience, and advocacy. <br>
+        Expansion of Programs: Over time, the organization expanded its outreach, <br>
+         developing programs such as: <br>
+        Mental Health Ambassador Training Program ("Empowering Voices") <br>
+        Workshops and Seminars on mental health, <br>
+         resilience, <br>
+          and well-being <br>
+        Youth-focused Initiatives on mental health education <br>
+        Art Therapy Workshops and other innovative healing approaches <br>
+        Training and Capacity Building: The organization launched <br>
+         'Becoming a Mental Health Counselor in 3 Months', <br>
+          an initiative to train and equip individuals to provide mental health support. <br>
+        Community Building: <br>
+         Well Being Advocate envisions creating a strong community <br>
+          of mental health counselors and advocates to continue spreading awareness and providing support. <br>
+        </p>
+      </center>
+    </p>
+  </div>
+  
+  <!-- Contact Section with Enhanced Dynamic Form -->
+  <section class="contact">
+    <h2 style="color: white;">Request</h2>
+    <div class="contact-form-container">
+      <form id="contact-form">
+        <div class="form-group">
+          <input type="text" name="user_name" placeholder=" " required>
+          <label>Your Name</label>
+        </div>
+        <div class="form-group">
+          <input type="email" name="user_email" placeholder=" " required>
+          <label>Your Email</label>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder=" " required></textarea>
+          <label>Your Message</label>
+        </div>
+        <button type="submit">Send Message</button>
+       
+      </form> <br>
+     <p style="color: blue; font-size: 1vw;">
+          This request form is for general inquiries and feedback. <br>
+        </p></div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer>
+    <div class="contact-info">
+      Email &amp; Phone: well1beingaddict@gmail.com <br>
+      whatsapp number : <br> 
+      <a href="http://wa.me/+237676788388">+237676788388</a> / <a href="http://wa.me/+237673227258">+237673227258</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@wellbeing.advocac?_t=ZM-8uvfHoq385v&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/wellbeingaddict237?igsh=ejlwMWIzaDdhMjE=" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/well-being-advocate-713984357?trk=contact-info" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61559336816104" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://t.me/Wellbeingadvocate" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </footer>
+  
+  <div class="footer-message">
+    Take care of yourself, your well-being is precious.
+  </div>
+  
+  <!-- Generic Modal for Full Content Display (if needed) -->
+  <div class="modal" id="modal">
+    <span class="close" id="modalClose">&times;</span>
+    <div id="modalContent"></div>
+  </div>
+
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'en,es,de,it,at,zh',
+        autodisplay: true // Ative automatiquement la traduction
+      }, 'google_translate_element');
+    }
+    // Injectele script Google Translate dynamiquement
+    (function() {
+      var gt= document.createElement('script');
+      gt.type= 'text/javascript';
+      gt.src= '// translate.google.com/ translate a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(gt)
+    })()
+  </script>
+  
+  
+  <!-- ------------------------------
+       Scripts for Interactions & EmailJS
+       ------------------------------ -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS (keep your keys unchanged)
+    (function(){
+      emailjs.init("1M4SAoQJpG00HAtLP");
+    })();
+    
+    // Send form data using EmailJS
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      emailjs.sendForm('service_za20yc2', 'template_x30nygg', this)
+        .then(function() {
+          alert('Message sent successfully!');
+        }, function(error) {
+          alert('Failed to send message.');
+        });
+    });
+    
+    // Open modal for About Cards
+    document.querySelectorAll('.card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var modalId = this.getAttribute('data-modal');
+        document.getElementById(modalId).classList.add('active');
+      });
+    });
+    
+    // Close modals on clicking close button
+    document.querySelectorAll('.modal .close').forEach(function(closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        var modalId = this.getAttribute('data-close');
+        if(modalId) {
+          document.getElementById(modalId).classList.remove('active');
+        } else {
+          document.getElementById('modal').classList.remove('active');
+        }
+      });
+    });
+    
+    // Generic modal opening function (for resource or event blocks, if needed)
+    function openModal(content) {
+      document.getElementById('modalContent').innerHTML = "<p>" + content + "</p>";
+      document.getElementById('modal').classList.add('active');
+    }
+    
+    // Dynamic label effect on blur (if field is filled, keep label up)
+    const fields = document.querySelectorAll('.form-group input, .form-group textarea');
+    fields.forEach(field => {
+      field.addEventListener('blur', function() {
+        if(this.value !== "") {
+          this.nextElementSibling.style.transform = "translateY(-5px)";
+          this.nextElementSibling.style.color = "#00ffff";
+        } else {
+          this.nextElementSibling.style.transform = "translateY(0)";
+          this.nextElementSibling.style.color = "#000";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
